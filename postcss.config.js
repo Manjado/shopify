@@ -1,5 +1,5 @@
 module.exports = {
-  plugins: ["tailwindcss", "autoprefixer"],
+  plugins: ["tailwindcss", "postcss-nesting", "autoprefixer"],
 }
 
 // testing => main_browser.css
