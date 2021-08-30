@@ -2,21 +2,22 @@ import { Product } from "@common/types/product"
 import { FC } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import s from "./ProductCard.module.css"
 
 interface Props {
-  product?: Product
+  product: Product
 }
 const placeholderImage = "/product-image-placeholder.svg"
 const ProductCard: FC<Props> = ({ product }) => {
-  if (!product) return <div>No product</div>
   return (
     <Link href={`/products/${product.slug}`}>
-      <a>
-        <div>
-          <h3>
-            <span>{product && product.name}</span>
+      <a className={s.root}>
+        <div className={s.productBg}></div>
+        <div className={s.productTag}>
+          <h3 className={s.productTitle}>
+            <span>{product.name}</span>
           </h3>
-          <span>13$</span>
+          <span className={s.productPrice}>14 $</span>
         </div>
         {product.images && (
           <Image
