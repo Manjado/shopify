@@ -1,15 +1,41 @@
-import { createContext, FC, useContext } from "react"
+import { createContext, FC, useContext, useState } from "react"
 
-const UIContext = createContext<{ [key: string]: string }>({
-  uiState: "defaultState",
+export interface StateModifires {
+  openSidebar: () => void
+  closeSidebar: () => void
+}
+
+export interface StateValues {
+  isSidebarOpen: boolean
+}
+
+const stateModifires = {
+  openSidebar: () => {},
+  closeSidebar: () => {},
+}
+
+const initialState = {
+  isSidebarOpen: false,
+}
+
+type State = StateValues & StateModifires
+
+const UIContext = createContext<State>({
+  ...stateModifires,
+  ...initialState,
 })
 
 export const UIProvider: FC = ({ children }) => {
-  return (
-    <UIContext.Provider value={{ uiState: "default" }}>
-      {children}
-    </UIContext.Provider>
-  )
+  const openSidebar = () => alert("opening sidebar")
+  const closeSidebar = () => alert("Closing sidebar")
+
+  const value = {
+    openSidebar,
+    closeSidebar,
+    isSidebarOpen: false,
+  }
+
+  return <UIContext.Provider value={value}>{children}</UIContext.Provider>
 }
 
 export const useUI = () => {
