@@ -3,7 +3,7 @@ import { fetchApi } from "@framework/utils"
 
 class Config {
   private config: ApiConfig
-  constructor(config: any) {
+  constructor(config: ApiConfig) {
     this.config = config
   }
 
