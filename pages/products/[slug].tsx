@@ -1,5 +1,5 @@
 import { Layout } from "@components/common"
-import { Container } from "@components/ui"
+import { ProductView } from "@components/product"
 import { getConfig } from "@framework/api/config"
 import { getAllProductsPaths, getProduct } from "@framework/product"
 import {
@@ -36,49 +36,7 @@ export const getStaticProps = async ({
 export default function ProductSlug({
   product,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  return (
-    <Container>
-      <p>id: {product?.id}</p>
-      <p>name: {product?.name}</p>
-      <p>price value: {product?.price.value}</p>
-      <p>price currency: {product?.price.currencyCode}</p>
-      <p>id: {product?.description}</p>
-      <h1 className="mb-4">OPTIONS</h1>
-      <div>
-        {product?.options.map((option, index) => (
-          <div key={index}>
-            <p>Name: {option.displayName}</p>
-            {option.values.map((value, index) => (
-              <div key={index}>
-                <div>
-                  <p>Label: {value.label}</p>
-                  <p>Hex Color: {value.hexColor}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-      <h1 className="mb-4">VARIANTS</h1>
-      <div>
-        {product?.variants.map((variant, index) => (
-          <div key={index}>
-            <p>Variant Name: {variant.name}</p>
-            {variant.options.map((vo, index) => (
-              <div key={index}>
-                {vo.values.map((value, index) => (
-                  <div key={index}>
-                    <p>Label: {value.label}</p>
-                    <p>Hexcolt: {value.hexColor}</p>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-    </Container>
-  )
+  return <>{product && <ProductView product={product} />}</>
 }
 
 ProductSlug.Layout = Layout
