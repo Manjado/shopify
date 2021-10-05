@@ -33,7 +33,7 @@ const normalizeProductOption = ({
     displayName,
     values: values.map((value) => {
       let output: any = {
-        label: values,
+        label: value,
       }
 
       if (displayName.match(/colou?r/gi)) {
