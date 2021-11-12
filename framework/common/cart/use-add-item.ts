@@ -1,7 +1,7 @@
 const useAddItem = () => {
   return (input: any) => {
     return {
-      output: input + "_MODIFIED",
+      output: JSON.stringify(input) + "_MODIFIED",
     }
   }
 }
