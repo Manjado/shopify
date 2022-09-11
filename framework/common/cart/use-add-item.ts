@@ -1,11 +1,11 @@
-import { useHooks } from "@common/utils/use-hooks"
+import { useHooks, useMutauionHook } from "@common/utils/use-hooks"
 
 const useAddItem = () => {
   const hook = useHooks((hooks) => {
     return hooks.cart.useAddItem
   })
 
-  return hook.useHook()
+  return useMutauionHook({ ...hook })
 }
 
 export default useAddItem
