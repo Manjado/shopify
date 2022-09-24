@@ -9,7 +9,6 @@ type ReturnData = {
 
 const getAllProducts = async (config: ApiConfig): Promise<Product[]> => {
   const { data } = await config.fetch<ReturnData>({
-    url: config.apiUrl,
     query: getAllProductsQuery,
   })
 
