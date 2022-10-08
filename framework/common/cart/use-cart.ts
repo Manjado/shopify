@@ -1,12 +1,10 @@
-import { ApiHooks } from "@common/types/api"
-import { useHooks } from "@common/utils/use-hooks"
+import { ApiHooks } from "@common/types/hooks"
+import { useHooks, useSWRHook } from "@common/utils/use-hooks"
 
 const useCart = () => {
   const hook = useHooks((hooks: ApiHooks) => hooks.cart.useCart)
 
-  return hook.useHook({
-    fetch: hook.fetcher,
-  })
+  return useSWRHook({ ...hook })
 }
 
 export default useCart
